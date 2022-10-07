@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/signuppage.css";
@@ -11,6 +11,11 @@ export default function SignUpPage() {
     password: "",
     passwordVerify: "",
   });
+  //set up password strength state
+  const [strength, setStrength] = useState("Weak Brew");
+
+  //set up password match state
+  const [match, setMatch] = useState(false);
 
   //set up navigate
   const navigate = useNavigate();
@@ -34,6 +39,29 @@ export default function SignUpPage() {
       })
       .catch((err) => console.log(err));
   };
+
+  //check for password strength and adjust state
+  useEffect(() => {
+    if (state.password.length < 5) {
+      setStrength("Weak Brew");
+    }
+    if (state.password.length >= 5 && state.password.length < 8) {
+      setStrength("Medium Brew");
+    }
+    if (state.password.length >= 8) {
+      setStrength("Strong Brew");
+    }
+  }, [state.password]);
+
+  //check if passwords match and adjust state
+  useEffect(() => {
+    if (state.password === state.passwordVerify) {
+      setMatch(true);
+    }
+    if (state.password !== state.passwordVerify) {
+      setMatch(false);
+    }
+  }, [state.passwordVerify]);
 
   return (
     <div className="form-container">
@@ -67,7 +95,22 @@ export default function SignUpPage() {
             onChange={updateState}
           ></input>
         </div>
-        {/* <p>strength</p> */}
+        {state.password && (
+          <p className="password-strength">
+            Strength:{" "}
+            <span
+              className={
+                strength === "Strong Brew"
+                  ? "strong"
+                  : strength === "Medium Brew"
+                  ? "medium"
+                  : "weak"
+              }
+            >
+              {strength}
+            </span>
+          </p>
+        )}
         <div className="input-container">
           <label>Verify Password:</label>
           <input
@@ -77,14 +120,25 @@ export default function SignUpPage() {
             onChange={updateState}
           ></input>
         </div>
+        {state.passwordVerify && (
+          <>
+            {!match ? (
+              <p className="password-match weak">Passwords do not match</p>
+            ) : (
+              <p className="password-match strong">Passwords match</p>
+            )}
+          </>
+        )}
         <button>Sign Up!</button>
       </form>
-      <p className="bottom-nav-link">
-        Already have an accout? <Link to="/login">Log In</Link>
-      </p>
-      <p className="bottom-nav-link">
-        Back to <Link to="/">Home Page</Link>
-      </p>
+      <div className="bottom-nav-link-container">
+        <p className="bottom-nav-link">
+          Already have an accout? <Link to="/login">Log In</Link>
+        </p>
+        <p className="bottom-nav-link">
+          Back to <Link to="/">Home Page</Link>
+        </p>
+      </div>
     </div>
   );
 }

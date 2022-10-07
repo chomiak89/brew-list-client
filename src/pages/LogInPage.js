@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../contexts/auth.context";
+import "../styles/loginpage.css";
 
 export default function LogInPage() {
   const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -35,10 +36,11 @@ export default function LogInPage() {
   };
 
   return (
-    <div>
-      <h2>Log In</h2>
+    <div className="form-container">
+      <h2 className="login-header">Log In</h2>
+      <p className="login-sub-header">Go find some brews</p>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input-container">
           <label>Username</label>
           <input
             name="username"
@@ -47,7 +49,7 @@ export default function LogInPage() {
             onChange={updateState}
           ></input>
         </div>
-        <div>
+        <div className="input-container">
           <label>Password</label>
           <input
             name="password"
@@ -58,6 +60,14 @@ export default function LogInPage() {
         </div>
         <button>Log In!</button>
       </form>
+      <div className="bottom-nav-link-container">
+        <p className="bottom-nav-link">
+          Dont have an account? <Link to="/signup">Signup</Link>
+        </p>
+        <p className="bottom-nav-link">
+          Back to <Link to="/">Home Page</Link>
+        </p>
+      </div>
     </div>
   );
 }
