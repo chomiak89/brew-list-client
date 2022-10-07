@@ -1,0 +1,35 @@
+nav {
+  height: 200px;
+}
+.unauth-nav-container {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+  position: fixed;
+  width: 100vw;
+  z-index: 10;
+  transition: all 0.5s ease;
+}
+.unauth-home-link-container {
+  width: 200px;
+  align-self: center;
+  text-transform: uppercase;
+}
+.unauth-home-link-container a {
+  text-decoration: none;
+  margin: 0 10px;
+  color: #000;
+}
+.unauth-home-link-container a:hover {
+  color: rgb(170, 168, 168);
+}
+.nav-logo {
+  height: 40%;
+  align-self: center;
+}
+
+.scroll {
+  background-color: #fff;
+  height: 150px;
+  transition: height 0.5s ease;
+}
