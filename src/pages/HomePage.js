@@ -22,7 +22,8 @@ export default function HomePage() {
           <img className="hero-image" src={squaresPic}></img>
         </div>
         <h2 className="about-text">
-          So what are you waiting for? Sign up and get yourself a brew!
+          So what are you waiting for? Sign up and find yourself the perfect
+          brew!
         </h2>
         <div className="coffee-parallax">
           <div className="coffee-parallax-overlay"></div>

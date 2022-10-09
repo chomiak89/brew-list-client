@@ -1,0 +1,62 @@
+.profile-container {
+  width: 50vw;
+  min-width: 360px;
+  height: 60vh;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 50px auto 0 auto;
+}
+.profile-header {
+  width: 100%;
+  height: 100px;
+  background-color: #000;
+  position: relative;
+  display: flex;
+}
+.profile-image-container {
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  border: 1px solid gray;
+  border-radius: 5px;
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+.profile-image-container button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+}
+.profile-username {
+  position: relative;
+  top: 25px;
+  width: 200px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.profile-sub-header {
+  width: 100%;
+  height: 60px;
+  background-color: #f8f9fa;
+}
+
+/* ----------- IMAGE UPLOAD  */
+.change-image-container {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #fff;
+  position: absolute;
+  top: 120px;
+  left: 150px;
+}
+.change-image-container img {
+  width: 240px;
+  height: 240px;
+  margin-top: 10px;
+}

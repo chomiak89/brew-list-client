@@ -30,7 +30,7 @@ export default function LogInPage() {
         console.log(res.data);
         storeToken(res.data.message);
         authenticateUser();
-        navigate("/");
+        navigate("/portal");
       })
       .catch((err) => console.log(err));
   };

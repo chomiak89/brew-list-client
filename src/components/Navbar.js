@@ -4,8 +4,12 @@ import { AuthContext } from "../contexts/auth.context";
 import "../styles/navbar.css";
 import logo from "../logo.png";
 
+import UserNav from "./UserNav";
+import UserNavItem from "./UserNavItem";
+import DropDownMenu from "./DropDownMenu";
+
 export default function Navbar() {
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
 
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
@@ -16,13 +20,27 @@ export default function Navbar() {
 
   return (
     <nav>
-      {/* <Link className="nav-link" to={"/"}>
-        Home
-      </Link> */}
       {isLoggedIn && (
-        <>
-          <button onClick={logOutUser}>Logout</button>
-        </>
+        <div className="auth-nav-container">
+          <img src={logo} className="nav-logo"></img>
+          <UserNav>
+            <UserNavItem
+              icon={<i className="fa-brands fa-linkedin-in"></i>}
+              style={{ color: "#000" }}
+            ></UserNavItem>
+            <UserNavItem
+              icon={<i className="fa-brands fa-github"></i>}
+              style={{ color: "#000" }}
+            ></UserNavItem>
+            <UserNavItem
+              icon={
+                <i className="fa-solid fa-bars" style={{ color: "#000" }}></i>
+              }
+            >
+              <DropDownMenu />
+            </UserNavItem>
+          </UserNav>
+        </div>
       )}
       {!isLoggedIn && (
         <div
@@ -41,7 +59,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-      {isLoggedIn && <p>Hello {user.username}</p>}
     </nav>
   );
 }
