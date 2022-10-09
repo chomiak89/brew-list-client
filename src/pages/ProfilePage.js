@@ -8,6 +8,7 @@ export default function ProfilePage() {
   const [profileImage, setProfileImage] = useState(null);
   const [changeImage, setChangeImage] = useState(false);
 
+  //function for image preview for uploading
   const previewImage = (file) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
