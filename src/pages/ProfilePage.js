@@ -33,7 +33,7 @@ export default function ProfilePage() {
               <input
                 type="file"
                 id="fileInput"
-                accept="image/png, image/jpeg"
+                accept="image/png, image/jpeg, image/jpg"
                 onChange={(e) => {
                   console.log(e.target.files);
                   setImageFile(e.target.files[0]);
