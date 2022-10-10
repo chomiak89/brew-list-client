@@ -7,6 +7,7 @@ import logo from "../logo.png";
 import UserNav from "./UserNav";
 import UserNavItem from "./UserNavItem";
 import DropDownMenu from "./DropDownMenu";
+import CityNav from "./CityNav";
 
 export default function Navbar() {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -21,25 +22,38 @@ export default function Navbar() {
   return (
     <nav>
       {isLoggedIn && (
-        <div className="auth-nav-container">
-          <img src={logo} className="nav-logo"></img>
-          <UserNav>
-            <UserNavItem
-              icon={<i className="fa-brands fa-linkedin-in"></i>}
-              style={{ color: "#000" }}
-            ></UserNavItem>
-            <UserNavItem
-              icon={<i className="fa-brands fa-github"></i>}
-              style={{ color: "#000" }}
-            ></UserNavItem>
-            <UserNavItem
-              icon={
-                <i className="fa-solid fa-bars" style={{ color: "#000" }}></i>
-              }
-            >
-              <DropDownMenu />
-            </UserNavItem>
-          </UserNav>
+        <div
+          className={
+            scroll
+              ? "main-auth-nav-container auth-scroll"
+              : "main-auth-nav-container"
+          }
+        >
+          <div
+            className={
+              scroll ? "auth-nav-container auth-scroll" : "auth-nav-container"
+            }
+          >
+            <img src={logo} className="nav-logo"></img>
+            <UserNav>
+              <UserNavItem
+                icon={<i className="fa-brands fa-linkedin-in"></i>}
+                style={{ color: "#000" }}
+              ></UserNavItem>
+              <UserNavItem
+                icon={<i className="fa-brands fa-github"></i>}
+                style={{ color: "#000" }}
+              ></UserNavItem>
+              <UserNavItem
+                icon={
+                  <i className="fa-solid fa-bars" style={{ color: "#000" }}></i>
+                }
+              >
+                <DropDownMenu />
+              </UserNavItem>
+            </UserNav>
+          </div>
+          <CityNav />
         </div>
       )}
       {!isLoggedIn && (

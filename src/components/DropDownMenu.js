@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
 import { AuthContext } from "../contexts/auth.context";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function DropDownMenu() {
   const [activeMenu, setActiveMenu] = useState("main");
@@ -18,8 +19,8 @@ export default function DropDownMenu() {
 
   function DropDownItem(props) {
     return (
-      <a
-        href={props.url}
+      <Link
+        to={props.url}
         className="menu-item"
         onClick={() => {
           if (props.logout) {
@@ -33,7 +34,23 @@ export default function DropDownMenu() {
         <span className="icon-button">{props.leftIcon}</span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
-      </a>
+      </Link>
+      // <a
+      //   href={props.url}
+      //   className="menu-item"
+      //   onClick={() => {
+      //     if (props.logout) {
+      //       logOutUser();
+      //       navigate("/");
+      //     } else {
+      //       props.goToMenu && setActiveMenu(props.goToMenu);
+      //     }
+      //   }}
+      // >
+      //   <span className="icon-button">{props.leftIcon}</span>
+      //   {props.children}
+      //   <span className="icon-right">{props.rightIcon}</span>
+      // </a>
     );
   }
   return (

@@ -1,12 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/auth.context";
 import "../styles/profilepage.css";
+import axios from "axios";
 
 export default function ProfilePage() {
   const { isLoggedIn, user } = useContext(AuthContext);
   const [imageFile, setImageFile] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
   const [changeImage, setChangeImage] = useState(false);
+  const [userData, setUserData] = useState(null);
+  const [changeAboutToggle, setChangeAboutToggle] = useState(false);
+  const [aboutText, setAboutText] = useState("");
 
   //function for image preview for uploading
   const previewImage = (file) => {
@@ -18,12 +22,55 @@ export default function ProfilePage() {
     };
   };
 
+  //get user info from DB when component loads, save it to userData state
+  useEffect(() => {
+    axios
+      .post("http://localhost:3001/user/get-info", { id: user._id })
+      .then((res) => {
+        console.log(res.data);
+        setUserData(res.data);
+        setAboutText(res.data.profileAbout);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  //function to submit the profile image on button click
+  const handleImageSubmit = (e) => {
+    e.preventDefault();
+    setChangeImage(!changeImage);
+    axios
+      .post("http://localhost:3001/user/profile-picture/upload", {
+        image: profileImage,
+        id: user._id,
+        username: user.username,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+  //function to submit the about text on button click
+  const handleAboutSubmit = (e) => {
+    e.preventDefault();
+    setChangeAboutToggle(!changeAboutToggle);
+    axios
+      .post("http://localhost:3001/user/about-text/upload", {
+        id: user._id,
+        aboutText: aboutText,
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
-      {isLoggedIn && <p>Hello {user.username}, welcome to your profile page</p>}
       <div className="profile-container">
         <div className="profile-header">
           <div className="profile-image-container">
+            {userData && (
+              <img
+                className="user-profile-image"
+                src={userData.profileImage}
+              ></img>
+            )}
             <button onClick={() => setChangeImage(!changeImage)}>
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
@@ -31,16 +78,19 @@ export default function ProfilePage() {
           {changeImage && (
             <div className="change-image-container">
               <img src={profileImage}></img>
-              <input
-                type="file"
-                id="fileInput"
-                accept="image/png, image/jpeg, image/jpg"
-                onChange={(e) => {
-                  console.log(e.target.files);
-                  setImageFile(e.target.files[0]);
-                  previewImage(e.target.files[0]);
-                }}
-              ></input>
+              <form onSubmit={handleImageSubmit}>
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="image/png, image/jpeg, image/jpg"
+                  onChange={(e) => {
+                    console.log(e.target.files);
+                    setImageFile(e.target.files[0]);
+                    previewImage(e.target.files[0]);
+                  }}
+                ></input>
+                <button>Save</button>
+              </form>
             </div>
           )}
           <p className="profile-username">
@@ -48,6 +98,33 @@ export default function ProfilePage() {
           </p>
         </div>
         <div className="profile-sub-header"></div>
+        <div className="profile-about-main-container">
+          <h5>About me:</h5>
+          <div className="profile-about-text-container">
+            {aboutText && <p>{aboutText}</p>}
+            <button onClick={() => setChangeAboutToggle(!changeAboutToggle)}>
+              <i className="fa-solid fa-pen-to-square"></i>
+            </button>
+          </div>
+          {changeAboutToggle && (
+            <div className="change-about-container">
+              <form onSubmit={handleAboutSubmit}>
+                <textarea
+                  value={aboutText}
+                  onChange={(e) => setAboutText(e.target.value)}
+                  className="change-about-textarea"
+                ></textarea>
+                <button
+                  type="button"
+                  onClick={() => setChangeAboutToggle(!changeAboutToggle)}
+                >
+                  Cancel
+                </button>
+                <button>Update</button>
+              </form>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

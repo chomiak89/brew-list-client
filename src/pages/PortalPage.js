@@ -1,9 +1,12 @@
 import React from "react";
+import CafeCardsDisplay from "../components/CafeCardsDisplay";
+
+//ℹ️ import routes
 
 export default function PortalPage() {
   return (
     <div>
-      <h1>Portal Page</h1>
+      <CafeCardsDisplay />
     </div>
   );
 }

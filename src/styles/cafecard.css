@@ -1,0 +1,21 @@
+.cafe-card-container {
+  width: 300px;
+  height: 400px;
+  margin: 30px 10px 0 10px;
+}
+.cafe-card-container img {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+}
+.cafe-card-info-container {
+  display: flex;
+}
+.cafe-card-name-container {
+  width: 200px;
+  text-align: left;
+}
+.cafe-card-score-container {
+  width: 100px;
+  text-align: right;
+}

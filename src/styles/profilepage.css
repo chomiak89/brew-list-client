@@ -30,6 +30,11 @@
   position: absolute;
   bottom: 5px;
   right: 0;
+  color: #fff;
+}
+.user-profile-image {
+  width: 120px;
+  height: 120px;
 }
 .profile-username {
   position: relative;
@@ -54,9 +59,73 @@
   position: absolute;
   top: 120px;
   left: 150px;
+  z-index: 10;
 }
 .change-image-container img {
   width: 240px;
   height: 240px;
   margin-top: 10px;
+}
+/* ----------- ABOUT SECTION  */
+.profile-about-main-container {
+  width: 40vw;
+  margin: 0 auto;
+  position: relative;
+}
+.profile-about-main-container h5 {
+  text-align: left;
+  margin: 40px 0 5px 0;
+}
+.profile-about-text-container {
+  width: 40vw;
+  height: 100px;
+  background-color: #f8f9fa;
+  margin: 0 auto;
+  padding-top: 16px;
+  text-align: left;
+  position: relative;
+}
+.profile-about-text-container p {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  font-size: 0.9rem;
+}
+.profile-about-text-container button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+  color: #000;
+}
+.change-about-container {
+  width: 40vw;
+  height: 117px;
+  position: absolute;
+  top: 21px;
+  background-color: #fff;
+}
+.change-about-container form {
+  width: 40vw;
+  height: 100%;
+  text-align: right;
+}
+.change-about-textarea {
+  width: 99%;
+  height: 70%;
+}
+.change-about-container button {
+  margin: 0;
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.change-about-container button:hover {
+  background-color: #000;
+  color: #fff;
 }

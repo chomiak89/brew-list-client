@@ -11,17 +11,54 @@ import ProfilePage from "./pages/ProfilePage";
 
 //ℹ️ import components
 import Navbar from "./components/Navbar";
+import IsPrivate from "./components/IsPrivate";
+import IsAnon from "./components/IsAnon";
 
 function App() {
   return (
     <div className="App">
       <Navbar></Navbar>
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/signup" element={<SignUpPage />}></Route>
-        <Route path="/login" element={<LogInPage />}></Route>
-        <Route path="/portal" element={<PortalPage />}></Route>
-        <Route path="/profile" element={<ProfilePage />}></Route>
+        <Route
+          path="/"
+          element={
+            <IsAnon>
+              <HomePage />
+            </IsAnon>
+          }
+        ></Route>
+        <Route
+          path="/signup"
+          element={
+            <IsAnon>
+              <SignUpPage />
+            </IsAnon>
+          }
+        ></Route>
+        <Route
+          path="/login"
+          element={
+            <IsAnon>
+              <LogInPage />
+            </IsAnon>
+          }
+        ></Route>
+        <Route
+          path="/portal"
+          element={
+            <IsPrivate>
+              <PortalPage />
+            </IsPrivate>
+          }
+        ></Route>
+        <Route
+          path="/profile"
+          element={
+            <IsPrivate>
+              <ProfilePage />
+            </IsPrivate>
+          }
+        ></Route>
       </Routes>
     </div>
   );

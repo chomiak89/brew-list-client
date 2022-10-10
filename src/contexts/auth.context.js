@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
   const storeToken = (token) => {
@@ -25,19 +25,19 @@ function AuthProvider({ children }) {
         .then((res) => {
           console.log(res);
           const user = res.data;
-          setIsLoading(false);
           setIsLoggedIn(true);
+          setIsLoading(false);
           setUser(user);
         })
         .catch((err) => {
           console.log(err);
-          setIsLoading(false);
           setIsLoggedIn(false);
+          setIsLoading(false);
           setUser(null);
         });
     } else {
-      setIsLoading(false);
       setIsLoggedIn(false);
+      setIsLoading(false);
       setUser(null);
     }
   };
