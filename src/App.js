@@ -8,6 +8,10 @@ import SignUpPage from "./pages/SignUpPage";
 import LogInPage from "./pages/LogInPage";
 import PortalPage from "./pages/PortalPage";
 import ProfilePage from "./pages/ProfilePage";
+import MiamiPage from "./pages/MiamiPage";
+import ChicagoPage from "./pages/ChicagoPage";
+import NewYorkPage from "./pages/NewYorkPage";
+import SingleCafe from "./pages/SingleCafe";
 
 //ℹ️ import components
 import Navbar from "./components/Navbar";
@@ -51,11 +55,48 @@ function App() {
             </IsPrivate>
           }
         ></Route>
+        {/* Route to authenticated users profile page */}
         <Route
           path="/profile"
           element={
             <IsPrivate>
               <ProfilePage />
+            </IsPrivate>
+          }
+        ></Route>
+        {/* Route to display cafes in Miami */}
+        <Route
+          path="/cafes/miami"
+          element={
+            <IsPrivate>
+              <MiamiPage />
+            </IsPrivate>
+          }
+        ></Route>
+        {/* Route to display cafes in Chicago */}
+        <Route
+          path="/cafes/chicago"
+          element={
+            <IsPrivate>
+              <ChicagoPage />
+            </IsPrivate>
+          }
+        ></Route>
+        {/* Route to display cafes in New York */}
+        <Route
+          path="/cafes/new-york"
+          element={
+            <IsPrivate>
+              <NewYorkPage />
+            </IsPrivate>
+          }
+        ></Route>
+        {/* Route to single cafe display page */}
+        <Route
+          path="/cafes/:id"
+          element={
+            <IsPrivate>
+              <SingleCafe />
             </IsPrivate>
           }
         ></Route>

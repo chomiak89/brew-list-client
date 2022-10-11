@@ -1,17 +1,29 @@
 import React from "react";
 import "../styles/cafecard.css";
+import { Link } from "react-router-dom";
 
-export default function CafeCard() {
+export default function CafeCard(props) {
+  const { id, image, name, city, rating, cost } = props;
+
   return (
     <div className="cafe-card-container">
-      <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"></img>
+      <Link to={`/cafes/${id}`}>
+        <div className="cafe-card-image-container">
+          <img src={image}></img>
+        </div>
+      </Link>
+      <i className="cafe-card-heart fa-solid fa-heart fa-lg"></i>
       <div className="cafe-card-info-container">
         <div className="cafe-card-name-container">
-          <h5>Starbucks, Miami</h5>
-          <p>$$$</p>
+          <h5>
+            {name}, {city}
+          </h5>
+          {/* <p>{cost}</p> */}
         </div>
         <div className="cafe-card-score-container">
-          <p>⭐️ 4.95</p>
+          <p>
+            {cost} ‧ <i className="fa-solid fa-star fa-xs"></i> {rating}
+          </p>
         </div>
       </div>
     </div>

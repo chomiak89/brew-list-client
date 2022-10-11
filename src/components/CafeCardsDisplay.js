@@ -1,22 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CafeCard from "./CafeCard";
 import "../styles/cafecardsdisplay.css";
+import axios from "axios";
 
-export default function CafeCardsDisplay() {
+export default function CafeCardsDisplay(props) {
+  const city = props.city;
+
+  //ℹ️ set up states
+  const [cafes, setCafes] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/cafe/find-all/${city}`)
+      .then((res) => {
+        console.log("CafeCardsDisplay", res.data);
+        setCafes(res.data.cafes);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="cafe-cards-display-container">
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
-      <CafeCard />
+      {cafes &&
+        cafes.map((cafe) => {
+          return (
+            <CafeCard
+              id={cafe._id}
+              image={cafe.images[0]}
+              name={cafe.name}
+              city={cafe.city}
+              rating={cafe.rating}
+              cost={cafe.cost}
+              key={cafe._id}
+            ></CafeCard>
+          );
+        })}
     </div>
   );
 }

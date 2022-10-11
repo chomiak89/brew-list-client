@@ -103,14 +103,21 @@ export default function DropDownMenu() {
             goToMenu="main"
           ></DropDownItem>
           <DropDownItem
+            url="/cafes/miami"
             leftIcon={<i className="fa-solid fa-umbrella-beach"></i>}
           >
             Miami
           </DropDownItem>
-          <DropDownItem leftIcon={<i className="fa-solid fa-city"></i>}>
+          <DropDownItem
+            url="/cafes/chicago"
+            leftIcon={<i className="fa-solid fa-city"></i>}
+          >
             Chicago
           </DropDownItem>
-          <DropDownItem leftIcon={<i className="fa-solid fa-tree-city"></i>}>
+          <DropDownItem
+            url="/cafes/new-york"
+            leftIcon={<i className="fa-solid fa-tree-city"></i>}
+          >
             New York
           </DropDownItem>
           <DropDownItem

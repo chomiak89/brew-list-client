@@ -6,7 +6,7 @@ import CafeCardsDisplay from "../components/CafeCardsDisplay";
 export default function PortalPage() {
   return (
     <div>
-      <CafeCardsDisplay />
+      <CafeCardsDisplay city="Miami" />
     </div>
   );
 }

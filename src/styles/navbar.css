@@ -1,5 +1,6 @@
 nav {
   height: 200px;
+  font-family: "Montserrat", sans-serif;
 }
 .unauth-nav-container {
   display: flex;
@@ -28,7 +29,7 @@ nav {
   align-self: center;
 }
 .main-auth-nav-container {
-  height: 240px;
+  height: 200px;
   width: 100vw;
   position: fixed;
   z-index: 10;
@@ -46,9 +47,12 @@ nav {
 .auth-nav-container {
   display: flex;
   justify-content: center;
-  height: 200px;
+  height: 160px;
   transition: all 0.5s ease;
   position: relative;
+}
+.auth-nav-container > .nav-logo {
+  height: 50%;
 }
 .auth-scroll {
   background-color: #fff;
