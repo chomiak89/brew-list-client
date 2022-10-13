@@ -4,9 +4,10 @@ import { AuthContext } from "../contexts/auth.context";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export default function DropDownMenu() {
+export default function DropDownMenu(props) {
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
+  const { url, isOpen, setIsOpen } = props;
 
   const { logOutUser } = useContext(AuthContext);
 
@@ -28,6 +29,9 @@ export default function DropDownMenu() {
         to={props.url}
         className="menu-item"
         onClick={() => {
+          if (props.goToMenu !== "settings" && props.goToMenu !== "main") {
+            setIsOpen(!isOpen);
+          }
           if (props.logout) {
             logOutUser();
             navigate("/");

@@ -12,6 +12,8 @@ import CityNav from "./CityNav";
 export default function Navbar() {
   const { isLoggedIn, user } = useContext(AuthContext);
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -47,11 +49,13 @@ export default function Navbar() {
                 style={{ color: "#000" }}
               ></UserNavItem>
               <UserNavItem
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
                 icon={
                   <i className="fa-solid fa-bars" style={{ color: "#000" }}></i>
                 }
               >
-                <DropDownMenu />
+                <DropDownMenu isOpen={isOpen} setIsOpen={setIsOpen} />
               </UserNavItem>
             </UserNav>
           </div>

@@ -17,8 +17,15 @@
   text-align: right;
 }
 .cafe-card-heart {
-  color: #fff;
+  color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 30px;
   right: 20px;
+}
+.cafe-card-heart-back {
+  color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 30px;
+  right: 17px;
+  font-size: 1.9rem;
 }

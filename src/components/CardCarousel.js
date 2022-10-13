@@ -1,10 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { AuthContext } from "../contexts/auth.context";
 import "../styles/cardcarousel.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function CardCarousel(props) {
   const { images, id } = props;
   const [index, setIndex] = useState(1);
+  const { user } = useContext(AuthContext);
+  const [favorites, setFavorites] = useState([]);
+  const [isFavorited, setIsFavorited] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/cafe/comment/find-user/${user._id}`)
+      .then((res) => {
+        console.log("CardCarousel.js", res.data.favorites);
+        setFavorites(res.data.favorites);
+        if (res.data.favorites.find((e) => e._id == id)) {
+          setIsFavorited(true);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleAddFavorite = () => {
+    setIsFavorited(true);
+    axios
+      .put(`http://localhost:3001/cafe/add-favorite/${user._id}/${id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+  const handleRemoveFavorite = () => {
+    setIsFavorited(false);
+    axios
+      .put(`http://localhost:3001/cafe/remove-favorite/${user._id}/${id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div
@@ -16,7 +49,14 @@ export default function CardCarousel(props) {
           <img src={images[index - 1]}></img>
         </Link>
       )}
-      <i className="cafe-card-heart fa-solid fa-heart fa-lg"></i>
+
+      <i className="cafe-card-heart-back fa-solid fa-heart fa-lg"></i>
+      <i
+        onClick={isFavorited ? handleRemoveFavorite : handleAddFavorite}
+        style={{ color: isFavorited ? "red" : "rgba(0, 0, 0, 0.5)" }}
+        className="cafe-card-heart fa-solid fa-heart fa-lg"
+      ></i>
+
       <button
         onMouseEnter={(e) => {
           e.target.classList.add("visible");

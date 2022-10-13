@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Comment(props) {
   const { commentText, date, image, name, userId, commentId } = props;
-  const [usrImg, setUsrImg] = useState("");
+  const [usrData, setUsrData] = useState("");
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function Comment(props) {
       .get(`http://localhost:3001/cafe/comment/find-user/${userId}`)
       .then((res) => {
         console.log("Comment.js", res.data);
-        setUsrImg(res.data.profileImage);
+        setUsrData(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -29,7 +29,11 @@ export default function Comment(props) {
   return (
     <div className="comment-container">
       <div className="comment-header-container">
-        {usrImg && <img src={usrImg}></img>}
+        {usrData && (
+          <Link to={`/users/${userId}`}>
+            <img src={usrData.profileImage}></img>
+          </Link>
+        )}
         <div className="comment-header-text">
           <h5>{name}</h5>
           <p>{date.slice(0, 10)}</p>

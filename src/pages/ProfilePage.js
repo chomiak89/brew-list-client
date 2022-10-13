@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../contexts/auth.context";
 import "../styles/profilepage.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function ProfilePage() {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -119,6 +120,12 @@ export default function ProfilePage() {
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
           </div>
+          <Link
+            to={`/users/${user._id}`}
+            className="profile-view-profile-button"
+          >
+            View public profile
+          </Link>
           {changeAboutToggle && (
             <div
               className="change-about-container"

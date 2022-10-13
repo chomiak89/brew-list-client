@@ -13,6 +13,7 @@ import ChicagoPage from "./pages/ChicagoPage";
 import NewYorkPage from "./pages/NewYorkPage";
 import SingleCafe from "./pages/SingleCafe";
 import AllPage from "./pages/AllPage";
+import ProfileView from "./pages/ProfileView";
 
 //ℹ️ import components
 import Navbar from "./components/Navbar";
@@ -107,6 +108,15 @@ function App() {
           element={
             <IsPrivate>
               <SingleCafe />
+            </IsPrivate>
+          }
+        ></Route>
+        {/* Route to view users profile */}
+        <Route
+          path="/users/:id"
+          element={
+            <IsPrivate>
+              <ProfileView />
             </IsPrivate>
           }
         ></Route>

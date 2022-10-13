@@ -27,3 +27,10 @@
   opacity: 100%;
   transition: opacity 0.3s ease;
 }
+.cafe-card-heart {
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+.cafe-card-heart:hover {
+  cursor: pointer;
+}

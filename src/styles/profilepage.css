@@ -211,3 +211,17 @@ input::file-selector-button:hover {
   background-color: #000;
   color: #fff;
 }
+.profile-view-profile-button {
+  margin: 80px auto 0 auto;
+  display: block;
+  text-transform: uppercase;
+  border: 1px solid black;
+  width: 200px;
+  border-radius: 15px;
+  padding: 10px 15px;
+  transition: all 0.2s ease;
+}
+.profile-view-profile-button:hover {
+  background-color: #000;
+  color: #fff;
+}

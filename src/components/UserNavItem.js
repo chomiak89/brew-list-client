@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function UserNavItem(props) {
   const [open, setOpen] = useState(false);
-  const { url } = props;
+  const { url, isOpen, setIsOpen } = props;
 
   return (
     <li className="nav-item">
@@ -14,11 +14,11 @@ export default function UserNavItem(props) {
       )}
 
       {!url && (
-        <Link className="icon-button" onClick={() => setOpen(!open)}>
+        <Link className="icon-button" onClick={() => setIsOpen(!isOpen)}>
           {props.icon}
         </Link>
       )}
-      {open && props.children}
+      {isOpen && props.children}
     </li>
   );
 }
