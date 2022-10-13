@@ -27,7 +27,7 @@ export default function Comment(props) {
   };
 
   return (
-    <div className="comment-container">
+    <div className="comment-container" key={commentId}>
       <div className="comment-header-container">
         {usrData && (
           <Link to={`/users/${userId}`}>
