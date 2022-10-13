@@ -27,7 +27,7 @@ export default function LogInPage() {
     axios
       .post("//localhost:3001/auth/login", state)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         storeToken(res.data.message);
         authenticateUser();
         navigate("/portal");

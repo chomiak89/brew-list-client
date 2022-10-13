@@ -13,7 +13,7 @@ export default function CafeCardsDisplay(props) {
     axios
       .get(`http://localhost:3001/cafe/find-all/${city}`)
       .then((res) => {
-        console.log("CafeCardsDisplay", res.data);
+        // console.log("CafeCardsDisplay", res.data);
         setCafes(res.data.cafes);
       })
       .catch((err) => console.log(err));

@@ -12,7 +12,7 @@ export default function ProfileView() {
     axios
       .get(`http://localhost:3001/cafe/comment/find-user/${id}`)
       .then((res) => {
-        console.log("Comment.js", res.data);
+        // console.log("Comment.js", res.data);
         setUsrData(res.data);
       })
       .catch((err) => console.log(err));

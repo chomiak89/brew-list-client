@@ -11,7 +11,7 @@ export default function CommentsDisplay(props) {
     axios
       .get(`http://localhost:3001/cafe/comment/get-comments/${id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setComments(res.data);
       })
       .catch((err) => console.log(err));

@@ -15,7 +15,7 @@ export default function CardCarousel(props) {
     axios
       .get(`http://localhost:3001/cafe/comment/find-user/${user._id}`)
       .then((res) => {
-        console.log("CardCarousel.js", res.data.favorites);
+        // console.log("CardCarousel.js", res.data.favorites);
         setFavorites(res.data.favorites);
         if (res.data.favorites.find((e) => e._id == id)) {
           setIsFavorited(true);

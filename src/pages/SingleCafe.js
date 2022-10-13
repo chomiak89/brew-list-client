@@ -16,7 +16,7 @@ export default function SingleCafe() {
     axios
       .get(`http://localhost:3001/cafe/find-one/${id}`)
       .then((res) => {
-        console.log(res.data.cafe);
+        // console.log(res.data.cafe);
         setCafe(res.data.cafe);
       })
       .catch((err) => console.log(err));
@@ -125,7 +125,7 @@ export default function SingleCafe() {
               <ul className="single-cafe-about-services-list">
                 {cafe.serviceOptions.map((service) => {
                   return (
-                    <li>
+                    <li key={service}>
                       <span>{service}</span>
                     </li>
                   );

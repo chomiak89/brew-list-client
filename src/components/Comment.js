@@ -13,7 +13,7 @@ export default function Comment(props) {
     axios
       .get(`http://localhost:3001/cafe/comment/find-user/${userId}`)
       .then((res) => {
-        console.log("Comment.js", res.data);
+        // console.log("Comment.js", res.data);
         setUsrData(res.data);
       })
       .catch((err) => console.log(err));
