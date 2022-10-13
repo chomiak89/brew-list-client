@@ -76,21 +76,34 @@ export default function ProfilePage() {
             </button>
           </div>
           {changeImage && (
-            <div className="change-image-container">
-              <img src={profileImage}></img>
-              <form onSubmit={handleImageSubmit}>
-                <input
-                  type="file"
-                  id="fileInput"
-                  accept="image/png, image/jpeg, image/jpg"
-                  onChange={(e) => {
-                    console.log(e.target.files);
-                    setImageFile(e.target.files[0]);
-                    previewImage(e.target.files[0]);
-                  }}
-                ></input>
-                <button>Save</button>
-              </form>
+            <div
+              className="change-image-main-container"
+              onClick={() => {
+                setChangeImage(!changeImage);
+              }}
+            >
+              <button className="change-image-close-modal-button">X</button>
+              <div
+                className="change-image-container"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                <img src={profileImage}></img>
+                <form onSubmit={handleImageSubmit}>
+                  <input
+                    type="file"
+                    id="fileInput"
+                    accept="image/png, image/jpeg, image/jpg"
+                    onChange={(e) => {
+                      console.log(e.target.files);
+                      setImageFile(e.target.files[0]);
+                      previewImage(e.target.files[0]);
+                    }}
+                  ></input>
+                  <button className="change-image-save-button">Save</button>
+                </form>
+              </div>
             </div>
           )}
           <p className="profile-username">
@@ -107,20 +120,30 @@ export default function ProfilePage() {
             </button>
           </div>
           {changeAboutToggle && (
-            <div className="change-about-container">
-              <form onSubmit={handleAboutSubmit}>
+            <div
+              className="change-about-container"
+              onClick={() => {
+                setChangeAboutToggle(!changeAboutToggle);
+              }}
+            >
+              <form
+                onSubmit={handleAboutSubmit}
+                onClick={(e) => e.stopPropagation()}
+              >
                 <textarea
                   value={aboutText}
                   onChange={(e) => setAboutText(e.target.value)}
                   className="change-about-textarea"
                 ></textarea>
-                <button
-                  type="button"
-                  onClick={() => setChangeAboutToggle(!changeAboutToggle)}
-                >
-                  Cancel
-                </button>
-                <button>Update</button>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <button
+                    type="button"
+                    onClick={() => setChangeAboutToggle(!changeAboutToggle)}
+                  >
+                    Cancel
+                  </button>
+                  <button>Update</button>
+                </div>
               </form>
             </div>
           )}

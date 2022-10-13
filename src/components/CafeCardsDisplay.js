@@ -27,6 +27,7 @@ export default function CafeCardsDisplay(props) {
             <CafeCard
               id={cafe._id}
               image={cafe.images[0]}
+              images={cafe.images}
               name={cafe.name}
               city={cafe.city}
               rating={cafe.rating}

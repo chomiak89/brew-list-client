@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../styles/singlecafe.css";
+import CommentsDisplay from "../components/CommentsDisplay";
+import { Link } from "react-router-dom";
 
 export default function SingleCafe() {
   const { id } = useParams();
   const [cafe, setCafe] = useState("");
+
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [modalImage, setModalImage] = useState(null);
 
   useEffect(() => {
     axios
@@ -40,23 +45,78 @@ export default function SingleCafe() {
           </div>
           <div className="single-cafe-image-container">
             <div className="single-cafe-main-image">
-              <img src={cafe.images[0]}></img>
+              <Link
+                onClick={() => {
+                  setModalImage(cafe.images[0]);
+                  setShowImageModal(true);
+                }}
+              >
+                <img src={cafe.images[0]}></img>
+              </Link>
             </div>
             <div className="single-cafe-side-images">
               <div className="mb">
-                <img src={cafe.images[1]}></img>
+                <Link
+                  onClick={() => {
+                    setModalImage(cafe.images[1]);
+                    setShowImageModal(true);
+                  }}
+                >
+                  <img src={cafe.images[1]}></img>
+                </Link>
               </div>
               <div className="mb">
-                <img src={cafe.images[2]} className="rct"></img>
+                <Link
+                  onClick={() => {
+                    setModalImage(cafe.images[2]);
+                    setShowImageModal(true);
+                  }}
+                >
+                  <img src={cafe.images[2]} className="rct"></img>
+                </Link>
               </div>
               <div>
-                <img src={cafe.images[3]}></img>
+                <Link
+                  onClick={() => {
+                    setModalImage(cafe.images[3]);
+                    setShowImageModal(true);
+                  }}
+                >
+                  <img src={cafe.images[3]}></img>
+                </Link>
               </div>
               <div>
-                <img src={cafe.images[4]} className="rcb"></img>
+                <Link
+                  onClick={() => {
+                    setModalImage(cafe.images[4]);
+                    setShowImageModal(true);
+                  }}
+                >
+                  <img src={cafe.images[4]} className="rcb"></img>
+                </Link>
               </div>
             </div>
           </div>
+          {/*IMAGE MODAL*/}
+          {showImageModal && (
+            <div
+              className="single-cafe-image-modal"
+              onClick={() => {
+                setShowImageModal(!showImageModal);
+              }}
+            >
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setShowImageModal(!showImageModal)}
+                >
+                  X
+                </button>
+                <img src={modalImage ? modalImage : null}></img>
+              </div>
+            </div>
+          )}
+          {/*END IMAGE MODAL*/}
           <div className="single-cafe-about-container">
             <div className="single-cafe-about-text-container">
               <h4>ABOUT</h4>
@@ -80,10 +140,14 @@ export default function SingleCafe() {
                 height="350"
                 style={{ border: 0, borderRadius: "15px" }}
                 loading="lazy"
-                allowfullscreen
+                allowFullScreen
                 src={`https://www.google.com/maps/embed/v1/place?q=place_id:${cafe.placeId}&key=AIzaSyBvuodY_PRk0bsy1sOD3QQb8xJzvm8G0F0`}
               ></iframe>
             </div>
+          </div>
+          <div className="single-cafe-comments-container hbt">
+            <h4>COMMENTS</h4>
+            <CommentsDisplay id={id} />
           </div>
         </>
       )}

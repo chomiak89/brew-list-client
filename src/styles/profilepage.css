@@ -51,21 +51,87 @@
 }
 
 /* ----------- IMAGE UPLOAD  */
+.change-image-main-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .change-image-container {
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
   border: 1px solid black;
   border-radius: 5px;
   background-color: #fff;
-  position: absolute;
-  top: 120px;
-  left: 150px;
-  z-index: 10;
+}
+.change-image-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+.change-image-save-button {
+  width: 70px;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  background-color: #fff;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.change-image-save-button:hover {
+  color: #fff;
+  background-color: #000;
 }
 .change-image-container img {
-  width: 240px;
-  height: 240px;
-  margin-top: 10px;
+  width: 360px;
+  height: 360px;
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  object-fit: cover;
+}
+#fileInput {
+  height: 30px;
+}
+.change-image-close-modal-button {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 2.5rem;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+.change-image-close-modal-button:hover {
+  color: rgb(140, 139, 139);
+  border-color: rgb(140, 139, 139);
+}
+input::file-selector-button {
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+input::file-selector-button:hover {
+  color: #fff;
+  background-color: #000;
 }
 /* ----------- ABOUT SECTION  */
 .profile-about-main-container {
@@ -85,6 +151,7 @@
   padding-top: 16px;
   text-align: left;
   position: relative;
+  border-radius: 15px;
 }
 .profile-about-text-container p {
   display: inline-block;
@@ -101,30 +168,44 @@
   color: #000;
 }
 .change-about-container {
-  width: 40vw;
-  height: 117px;
-  position: absolute;
-  top: 21px;
-  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .change-about-container form {
   width: 40vw;
-  height: 100%;
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .change-about-textarea {
-  width: 99%;
-  height: 70%;
+  width: 550px;
+  height: 250px;
+  border-radius: 15px;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
 }
 .change-about-container button {
-  margin: 0;
-  padding: 4px 8px;
-  font-size: 0.7rem;
+  margin: 40px 5px 0 5px;
+  padding: 6px 10px;
+  width: 100px;
+  font-size: 0.9rem;
   background-color: #fff;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 15px;
   margin-left: 5px;
   cursor: pointer;
+  font-family: "Montserrat", sans-serif;
 }
 .change-about-container button:hover {
   background-color: #000;

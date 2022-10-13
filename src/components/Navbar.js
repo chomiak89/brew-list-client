@@ -37,10 +37,12 @@ export default function Navbar() {
             <img src={logo} className="nav-logo"></img>
             <UserNav>
               <UserNavItem
+                url="https://www.linkedin.com/in/kamil-chomiak"
                 icon={<i className="fa-brands fa-linkedin-in"></i>}
                 style={{ color: "#000" }}
               ></UserNavItem>
               <UserNavItem
+                url="https://github.com/chomiak89"
                 icon={<i className="fa-brands fa-github"></i>}
                 style={{ color: "#000" }}
               ></UserNavItem>

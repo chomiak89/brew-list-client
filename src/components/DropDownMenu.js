@@ -20,6 +20,11 @@ export default function DropDownMenu() {
   function DropDownItem(props) {
     return (
       <Link
+        style={{
+          textTransform: "uppercase",
+          fontFamily: "Montserrat, sans-serif",
+          fontSize: ".9rem",
+        }}
         to={props.url}
         className="menu-item"
         onClick={() => {
@@ -31,7 +36,9 @@ export default function DropDownMenu() {
           }
         }}
       >
-        <span className="icon-button">{props.leftIcon}</span>
+        <span className="icon-button" style={{ marginRight: "10px" }}>
+          {props.leftIcon}
+        </span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
       </Link>
@@ -121,6 +128,7 @@ export default function DropDownMenu() {
             New York
           </DropDownItem>
           <DropDownItem
+            url="/cafes/all"
             leftIcon={<i className="fa-solid fa-earth-americas"></i>}
           >
             All

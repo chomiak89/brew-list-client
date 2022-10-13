@@ -12,7 +12,7 @@ export default function () {
         <span>|</span>
         <Link to={"/cafes/new-york"}>New York</Link>
         <span>|</span>
-        <Link to={""}>All</Link>
+        <Link to={"/cafes/all"}>All</Link>
       </div>
     </div>
   );

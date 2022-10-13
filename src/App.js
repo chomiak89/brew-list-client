@@ -12,6 +12,7 @@ import MiamiPage from "./pages/MiamiPage";
 import ChicagoPage from "./pages/ChicagoPage";
 import NewYorkPage from "./pages/NewYorkPage";
 import SingleCafe from "./pages/SingleCafe";
+import AllPage from "./pages/AllPage";
 
 //ℹ️ import components
 import Navbar from "./components/Navbar";
@@ -88,6 +89,15 @@ function App() {
           element={
             <IsPrivate>
               <NewYorkPage />
+            </IsPrivate>
+          }
+        ></Route>
+        {/* Route to display all cafes */}
+        <Route
+          path="/cafes/all"
+          element={
+            <IsPrivate>
+              <AllPage />
             </IsPrivate>
           }
         ></Route>

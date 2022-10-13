@@ -64,6 +64,7 @@
 .single-cafe-about-container {
   text-align: left;
   margin-top: 50px;
+  margin-bottom: 50px;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -118,4 +119,47 @@
   margin: 0 auto 20px auto;
   display: block;
   font-weight: 200;
+}
+/* ---------------------------------- COMMENTS SECTION STYLES */
+.single-cafe-comments-container {
+  width: 100%;
+  text-align: left;
+}
+.single-cafe-comments-container h4 {
+  font-weight: 400;
+  margin-bottom: 70px;
+}
+/* ---------------------------------- COMMENTS SECTION STYLES */
+.single-cafe-image-modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.single-cafe-image-modal img {
+  width: 70%;
+}
+.single-cafe-image-modal button {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 2.5rem;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.single-cafe-image-modal button:hover {
+  color: rgb(140, 139, 139);
+  border-color: rgb(140, 139, 139);
 }

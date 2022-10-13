@@ -2,17 +2,14 @@ import React from "react";
 import "../styles/cafecard.css";
 import { Link } from "react-router-dom";
 
+import CardCarousel from "./CardCarousel";
+
 export default function CafeCard(props) {
-  const { id, image, name, city, rating, cost } = props;
+  const { id, image, images, name, city, rating, cost } = props;
 
   return (
     <div className="cafe-card-container">
-      <Link to={`/cafes/${id}`}>
-        <div className="cafe-card-image-container">
-          <img src={image}></img>
-        </div>
-      </Link>
-      <i className="cafe-card-heart fa-solid fa-heart fa-lg"></i>
+      <CardCarousel images={images} id={id} />
       <div className="cafe-card-info-container">
         <div className="cafe-card-name-container">
           <h5>
