@@ -13,7 +13,9 @@ export default function CardCarousel(props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/cafe/comment/find-user/${user._id}`)
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/cafe/comment/find-user/${user._id}`
+      )
       .then((res) => {
         // console.log("CardCarousel.js", res.data.favorites);
         setFavorites(res.data.favorites);
@@ -27,14 +29,18 @@ export default function CardCarousel(props) {
   const handleAddFavorite = () => {
     setIsFavorited(true);
     axios
-      .put(`http://localhost:3001/cafe/add-favorite/${user._id}/${id}`)
+      .put(
+        `${process.env.REACT_APP_BACKEND_URL}/cafe/add-favorite/${user._id}/${id}`
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
   const handleRemoveFavorite = () => {
     setIsFavorited(false);
     axios
-      .put(`http://localhost:3001/cafe/remove-favorite/${user._id}/${id}`)
+      .put(
+        `${process.env.REACT_APP_BACKEND_URL}/cafe/remove-favorite/${user._id}/${id}`
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };

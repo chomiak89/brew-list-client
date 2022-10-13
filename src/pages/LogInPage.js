@@ -25,7 +25,7 @@ export default function LogInPage() {
     event.preventDefault();
 
     axios
-      .post("//localhost:3001/auth/login", state)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, state)
       .then((res) => {
         // console.log(res.data);
         storeToken(res.data.message);

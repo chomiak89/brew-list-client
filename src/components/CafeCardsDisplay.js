@@ -11,7 +11,7 @@ export default function CafeCardsDisplay(props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/cafe/find-all/${city}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/cafe/find-all/${city}`)
       .then((res) => {
         // console.log("CafeCardsDisplay", res.data);
         setCafes(res.data.cafes);

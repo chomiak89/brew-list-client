@@ -10,7 +10,7 @@ export default function ProfileView() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/cafe/comment/find-user/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/cafe/comment/find-user/${id}`)
       .then((res) => {
         // console.log("Comment.js", res.data);
         setUsrData(res.data);

@@ -9,7 +9,9 @@ export default function CommentsDisplay(props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/cafe/comment/get-comments/${id}`)
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/cafe/comment/get-comments/${id}`
+      )
       .then((res) => {
         // console.log(res.data);
         setComments(res.data);

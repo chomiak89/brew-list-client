@@ -11,7 +11,9 @@ export default function Comment(props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/cafe/comment/find-user/${userId}`)
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/cafe/comment/find-user/${userId}`
+      )
       .then((res) => {
         // console.log("Comment.js", res.data);
         setUsrData(res.data);
@@ -21,7 +23,7 @@ export default function Comment(props) {
 
   const handleDelete = (e) => {
     axios
-      .delete(`http://localhost:3001/cafe/comment/${commentId}`)
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/cafe/comment/${commentId}`)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };

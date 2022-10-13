@@ -40,11 +40,14 @@ export default function ProfilePage() {
     e.preventDefault();
     setChangeImage(!changeImage);
     axios
-      .post("http://localhost:3001/user/profile-picture/upload", {
-        image: profileImage,
-        id: user._id,
-        username: user.username,
-      })
+      .post(
+        `${process.env.REACT_APP_BACKEND_URL}/user/profile-picture/upload`,
+        {
+          image: profileImage,
+          id: user._id,
+          username: user.username,
+        }
+      )
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
@@ -53,7 +56,7 @@ export default function ProfilePage() {
     e.preventDefault();
     setChangeAboutToggle(!changeAboutToggle);
     axios
-      .post("http://localhost:3001/user/about-text/upload", {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/user/about-text/upload`, {
         id: user._id,
         aboutText: aboutText,
       })

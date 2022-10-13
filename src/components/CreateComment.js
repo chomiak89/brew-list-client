@@ -12,7 +12,7 @@ export default function CreateComment(props) {
 
   const handleSubmit = (e) => {
     axios
-      .post("http://localhost:3001/cafe/comment/create", {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/cafe/comment/create`, {
         owner: user._id,
         commentText: commentText,
         date: new Date(),

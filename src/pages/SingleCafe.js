@@ -14,7 +14,7 @@ export default function SingleCafe() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/cafe/find-one/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/cafe/find-one/${id}`)
       .then((res) => {
         // console.log(res.data.cafe);
         setCafe(res.data.cafe);
@@ -141,7 +141,7 @@ export default function SingleCafe() {
                 style={{ border: 0, borderRadius: "15px" }}
                 loading="lazy"
                 allowFullScreen
-                src={`https://www.google.com/maps/embed/v1/place?q=place_id:${cafe.placeId}&key=AIzaSyBvuodY_PRk0bsy1sOD3QQb8xJzvm8G0F0`}
+                src={`https://www.google.com/maps/embed/v1/place?q=place_id:${cafe.placeId}&${process.env.REACT_APP_MAP_KEY}`}
               ></iframe>
             </div>
           </div>

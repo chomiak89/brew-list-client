@@ -32,7 +32,7 @@ export default function SignUpPage() {
     event.preventDefault();
 
     axios
-      .post("//localhost:3001/auth/signup", state)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/auth/signup`, state)
       .then((res) => {
         console.log(res.data);
         navigate("/login");
