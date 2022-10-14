@@ -16,7 +16,8 @@ export default function HomePage() {
       <div className="hero-text-container">
         <h1 className="catch-phrase">Find your perfect brew</h1>
         <h2 className="about-text">
-          Brew List is a platform to find and connect with local coffee shops.
+          Brew List is a platform to find and connect with local hip coffee
+          shops.
         </h2>
         <div className="hero-image-container">
           <img className="hero-image" src={squaresPic}></img>

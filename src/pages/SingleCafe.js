@@ -141,7 +141,7 @@ export default function SingleCafe() {
                 style={{ border: 0, borderRadius: "15px" }}
                 loading="lazy"
                 allowFullScreen
-                src={`https://www.google.com/maps/embed/v1/place?q=place_id:${cafe.placeId}&${process.env.REACT_APP_MAP_KEY}`}
+                src={`https://www.google.com/maps/embed/v1/place?q=place_id:${cafe.placeId}&key=${process.env.REACT_APP_MAP_KEY}`}
               ></iframe>
             </div>
           </div>

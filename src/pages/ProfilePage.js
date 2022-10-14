@@ -26,7 +26,9 @@ export default function ProfilePage() {
   //get user info from DB when component loads, save it to userData state
   useEffect(() => {
     axios
-      .post("http://localhost:3001/user/get-info", { id: user._id })
+      .post(`${process.env.REACT_APP_BACKEND_URL}/user/get-info`, {
+        id: user._id,
+      })
       .then((res) => {
         console.log(res.data);
         setUserData(res.data);
